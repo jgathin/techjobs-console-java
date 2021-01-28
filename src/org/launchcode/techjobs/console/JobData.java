@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by LaunchCode
@@ -70,13 +71,15 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
+        String UpCaseVal = value.toUpperCase();
+
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column);
+            String aValue = row.get(column).toUpperCase();
 
-            if (aValue.contains(value)) {
+            if (aValue.contains(UpCaseVal)) {
                 jobs.add(row);
             }
         }
@@ -128,15 +131,17 @@ public class JobData {
     public static void findByValue(String value) {
         loadData();
 
+        String upCaseVal = value.toUpperCase();
+
         ArrayList<HashMap<String, String>> alreadyUsed = new ArrayList<>();
 
 
         for(HashMap<String, String> jobListing : allJobs) {
 
             for(String jobHead : jobListing.keySet()) {
-                String search = jobListing.get(jobHead);
+                String search = jobListing.get(jobHead).toUpperCase();
 
-                if(search.contains(value) && !alreadyUsed.contains(jobListing)) {
+                if(search.contains(upCaseVal) && !alreadyUsed.contains(jobListing)) {
 
                     System.out.println("*****");
                     for(String itemHead : jobListing.keySet()) {
