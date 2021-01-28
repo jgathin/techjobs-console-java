@@ -125,4 +125,34 @@ public class JobData {
         }
     }
 
+    public static void findByValue(String value) {
+        loadData();
+
+        ArrayList<HashMap<String, String>> alreadyUsed = new ArrayList<>();
+
+
+        for(HashMap<String, String> jobListing : allJobs) {
+
+            for(String jobHead : jobListing.keySet()) {
+                String search = jobListing.get(jobHead);
+
+                if(search.contains(value) && !alreadyUsed.contains(jobListing)) {
+                    for(String itemHead : jobListing.keySet()) {
+                        System.out.print(itemHead + ": ");
+                        String dataString = jobListing.get(itemHead);
+                        System.out.print(dataString + "\n");
+                    }
+
+                    alreadyUsed.add(jobListing);
+                    System.out.println("\n");
+                }
+            }
+        }
+
+        if(alreadyUsed.size() == 0) {
+            System.out.println("Sorry, nothing matched your query...");
+        }
+    }
+
+
 }
