@@ -137,12 +137,16 @@ public class JobData {
                 String search = jobListing.get(jobHead);
 
                 if(search.contains(value) && !alreadyUsed.contains(jobListing)) {
+
+                    System.out.println("*****");
                     for(String itemHead : jobListing.keySet()) {
+
                         System.out.print(itemHead + ": ");
                         String dataString = jobListing.get(itemHead);
                         System.out.print(dataString + "\n");
-                    }
 
+                    }
+                    System.out.println("*****");
                     alreadyUsed.add(jobListing);
                     System.out.println("\n");
                 }
