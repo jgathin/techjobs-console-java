@@ -118,11 +118,15 @@ public class TechJobs {
             System.out.println("Unfortunately, there are no results to display.");
         } else {
             for(HashMap<String, String> option : someJobs) {
+                System.out.println("*****");
                 for(String data : option.keySet()) {
-                System.out.print(data + ":");
+
+                    System.out.print(data + ":");
 
                 System.out.print(" " + option.get(data) + "\n");
+
                 }
+                System.out.println("*****");
                 System.out.println("\n");
             }
         }
